@@ -19,7 +19,7 @@ Thành viên nhóm:
 │   └── main
 │       ├── java
 │       │   ├── com
-│       │   │   └── OOP
+│       │   │   └── oop
 │       │   │       └── visualgo
 │       │   │           ├── HelloApplication.java
 │       │   │           ├── HelloController.java
@@ -29,5 +29,5 @@ Thành viên nhóm:
 │       │   ├── module-info.java
 │       └── resources
 │           └── com
-│               └── OOP
+│               └── oop
 │                   └── visualgo
