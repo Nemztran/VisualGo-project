@@ -4,8 +4,12 @@ Thành viên nhóm:
 2. Nguyễn Đức Khải
 3. Trần Đình Nam
 4. Phạm Việt Tiến
+   
+---
 
-.
+# Cấu trúc thư mục
+```text
+OOP.TN.20251-02/
 ├── README.md
 ├── design
 │   ├── Class diagram.png
@@ -31,3 +35,4 @@ Thành viên nhóm:
 │           └── com
 │               └── oop
 │                   └── visualgo
+```
