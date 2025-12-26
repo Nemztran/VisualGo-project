@@ -25,13 +25,38 @@ public class GenericTree<T> implements Tree<T, GenericTreeNode<T>> {
     @Override
     public boolean delete(T value) {
         if (root == null) return false;
+
+        // Nếu xóa root
         if (root.getValue().equals(value)) {
-            root = null;
-            return false;
+            // Nếu root có con, chọn con đầu tiên làm root mới
+            // và các con còn lại trở thành con của root mới
+            if (!root.getChildren().isEmpty()) {
+                GenericTreeNode<T> newRoot = root.getChildren().get(0);
+                newRoot.setParent(null);
+                // Chuyển các con còn lại của root cũ cho root mới
+                for (int i = 1; i < root.getChildren().size(); i++) {
+                    GenericTreeNode<T> sibling = root.getChildren().get(i);
+                    newRoot.addChild(sibling);
+                }
+                root = newRoot;
+            } else {
+                root = null;
+            }
+            return true;
         }
+
         GenericTreeNode<T> deleteNode = search(value);
         if (deleteNode != null && deleteNode.getParent() != null) {
-            deleteNode.getParent().removeChild(deleteNode);
+            GenericTreeNode<T> parent = deleteNode.getParent();
+
+            // Chuyển tất cả con của node bị xóa cho parent
+            for (GenericTreeNode<T> child : deleteNode.getChildren()) {
+                child.setParent(parent);
+                parent.addChild(child);
+            }
+
+            // Xóa node khỏi parent
+            parent.removeChild(deleteNode);
             return true;
         }
         return false;
